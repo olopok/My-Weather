@@ -1,11 +1,9 @@
-import "../css/style.css";
-import "../css/toggle-button.css";
 import { getWeather } from "./data-request";
 
 const data = await getWeather();
 console.log(data);
 
-const objCurrent = {
+const objCurrentData = {
   location: data.resolvedAddress,
   description: data.description,
   currentConditions: data.currentConditions.conditions,
@@ -14,4 +12,4 @@ const objCurrent = {
   temp: data.currentConditions.temp,
   precipProb: data.currentConditions.precipprob,
 };
-console.log("current:", objCurrent);
+console.log("current:", objCurrentData);
