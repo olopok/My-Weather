@@ -6,19 +6,24 @@
     <title>My Forecast</title>
   </head>
   <body>
-    <div class="container">
-      <input
-        type="search"
-        name="location"
-        id="location"
-        placeholder="Insert a location"
-      />
-      <img src="./icons/magnify.svg" alt="search" id="search" />
-      <label class="switch">
-        <input type="checkbox">
-        <span class="slider round"></span>
-      </label>
+    <div class="container main-top">
+      <div class="container search-bar">
+        <input
+          type="search"
+          name="location"
+          id="location"
+          placeholder="Insert a location"
+        />
+        <img src="./icons/magnify.svg" alt="search" id="search" />
+      </div>
+      <div class="container toggle-swicth">
+        <span id="f">Fahrenheit</span>
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider round"> </span>
+        </label>
+        <span id="c">Celsius</span>
+      </div>
     </div>
-
   </body>
 </html>
