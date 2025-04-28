@@ -47,6 +47,6 @@ export const icons = {
 };
 export function iconsName(x) {
   x = x.replace(/-/g, "");
-  console.log(x);
+  console.log('iconsName', x);
   return x;
 }

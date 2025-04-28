@@ -26,9 +26,11 @@ export async function weatherData(location) {
     temp: data.currentConditions.temp,
     feelsLike: data.currentConditions.feelslike,
     precipProb: data.currentConditions.precipprob,
+    days: data.days,
   };
-  console.log('obj', objCurrentData.icon)
-  locationContainer()
+  console.log("obj", objCurrentData);
+  locationContainer();
+  daysFiveUI();
 }
 
 // Conversion functions
@@ -51,11 +53,8 @@ const updateTemperatureDisplay = () => {
 };
 
 // create location container
-export function locationContainer () {
-  // const body = document.querySelector("body");
-  // const titleContainer = document.createElement("div");
-  // titleContainer.classList.add("title-container", "container");
-  const titleContainer= document.querySelector('.title-container')
+export function locationContainer() {
+  const titleContainer = document.querySelector(".title-container");
   const title = document.createElement("h1");
   title.setAttribute("id", "item-a");
   const paragraph = document.createElement("p");
@@ -90,5 +89,26 @@ export function locationContainer () {
   titleContainer.appendChild(temp);
   titleContainer.appendChild(feelsLike);
   titleContainer.appendChild(precip);
-  // body.appendChild(titleContainer);
-};
+}
+
+export function daysFiveUI() {
+  const daysContainer = document.querySelector(".days-container");
+  daysContainer.innerHTML = "";
+
+  for (let i = 0; i < 5; i++) {
+    const day = document.createElement("div");
+    day.classList.add("single-day-container");
+    const date = document.createElement("span");
+    date.id = i + 1;
+    let newDate = objCurrentData.days[i].datetime.split("-");
+    newDate = newDate.toReversed().join("-");
+    date.textContent = newDate;
+    const icon = document.createElement("img");
+    icon.classList.add("weather-icon");
+    icon.id = "day-icon";
+    icon.src = `${icons[iconsName(objCurrentData.days[i].icon)]}`;
+    day.appendChild(date);
+    day.appendChild(icon);
+    daysContainer.appendChild(day);
+  }
+}
